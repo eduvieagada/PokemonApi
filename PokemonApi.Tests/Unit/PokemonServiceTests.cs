@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PokemonApi.Tests.Unit
 {
-    using static TestUtilities;
+    using static PokemonTestUtilities;
     [TestFixture]
     class PokemonServiceTests
     {
@@ -39,9 +39,25 @@ namespace PokemonApi.Tests.Unit
         }
 
         [Test]
-        public async Task GivenInvalidPokemonName_ThrowException()
+        public void GivenInvalidPokemonName_ThrowException()
         {
             Assert.ThrowsAsync<PokemonNotFoundException>(async () => await pokemonService.FetchPokemonData("pikachu"));
+        }
+
+        [Test]
+        public async Task GivenPokemonName_FetchPokemonWithTranslatedDescription()
+        {
+            var pokemon = await pokemonService.FetchTranslatedPokemonData("mewtwo");
+
+            pokemon.Should().NotBeNull();
+            pokemon.Name.Should().Be("mewtwo");
+            pokemon.Habitat.Should().Be("rare");
+        }
+
+        [Test]
+        public void GivenInvalidPokemonName_ThrowException_OnFetchTranslatedPokemonData()
+        {
+            Assert.ThrowsAsync<PokemonNotFoundException>(async () => await pokemonService.FetchTranslatedPokemonData("pikachu"));
         }
     }
 }

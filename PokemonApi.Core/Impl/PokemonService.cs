@@ -27,25 +27,12 @@ namespace PokemonApi.Core.Impl
         {
             var pokemon = await pokemonDataSource.FetchPokemon(pokemonName);
 
-            var translator = GetTranslator(pokemon);
+            var translator = translatorFactory.GetTranslator(pokemon);
 
             var translatedDescription = await translator.TranslateText(pokemon.Description);
             pokemon.Description = translatedDescription is not null ? translatedDescription : pokemon.Description;
 
             return pokemon;
-        }
-
-        private ITranslator GetTranslator(Pokemon pokemon)
-        {
-            if (pokemon is null)
-                throw new ArgumentNullException(nameof(pokemon));
-
-            if (pokemon.Habitat.Equals("cave", StringComparison.OrdinalIgnoreCase) || pokemon.IsLegendary)
-            {
-                return translatorFactory.GetTranslator(TranslatorType.Yoda);
-            }
-
-            return translatorFactory.GetTranslator(TranslatorType.Shakespeare);
         }
     }
 }

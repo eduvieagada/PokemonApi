@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace PokemonApi.Tests.Unit
 {
     using static It;
-    static class TestUtilities
+    static class PokemonTestUtilities
     {
         public static IPokemonDataSource FetchDataSource()
         {

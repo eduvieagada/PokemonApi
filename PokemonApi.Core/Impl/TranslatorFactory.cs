@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokemonApi.Core.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,19 @@ namespace PokemonApi.Core.Impl
         public ITranslator GetTranslator(TranslatorType translatorType)
         {
             return translators.First(t => t.Type == translatorType);
+        }
+
+        public ITranslator GetTranslator(Pokemon pokemon)
+        {
+            if (pokemon is null)
+                throw new ArgumentNullException(nameof(pokemon));
+
+            if (pokemon.Habitat.Equals("cave", StringComparison.OrdinalIgnoreCase) || pokemon.IsLegendary)
+            {
+                return GetTranslator(TranslatorType.Yoda);
+            }
+
+            return GetTranslator(TranslatorType.Shakespeare);
         }
     }
 }
