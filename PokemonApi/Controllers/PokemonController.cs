@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PokemonApi.Core;
+using PokemonApi.Core.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,8 @@ namespace PokemonApi.Controllers
 
             var pokemon = await _pokemonService.FetchPokemonData(pokemonName);
 
-            return Ok(pokemon);
+
+            return FormatResult(pokemon);
         }
 
         [HttpGet("/translated/{pokemonName}")]
@@ -44,7 +46,9 @@ namespace PokemonApi.Controllers
 
             var pokemon = await _pokemonService.FetchTranslatedPokemonData(pokemonName);
 
-            return Ok(pokemon);
+            return FormatResult(pokemon);
         }
+
+        private IActionResult FormatResult(Pokemon pokemon) => pokemon is null ? NotFound() : Ok(pokemon);
     }
 }
