@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonApi.Core", "PokemonA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonApi.Tests", "PokemonApi.Tests\PokemonApi.Tests.csproj", "{B1A79406-A8D7-4A54-8C8D-3BC5F06DB461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Api.FunTranslations", "Pokemon.Api.FunTranslations\Pokemon.Api.FunTranslations.csproj", "{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApi.FunTranslations", "Pokemon.Api.FunTranslations\PokemonApi.FunTranslations.csproj", "{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Api.PokeApi", "Pokemon.Api.PokeApi\Pokemon.Api.PokeApi.csproj", "{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApi.PokeApi", "Pokemon.Api.PokeApi\PokemonApi.PokeApi.csproj", "{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
