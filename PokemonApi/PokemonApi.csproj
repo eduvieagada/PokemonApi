@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pokemon.Api.FunTranslations\PokemonApi.FunTranslations.csproj" />
+    <ProjectReference Include="..\Pokemon.Api.PokeApi\PokemonApi.PokeApi.csproj" />
+    <ProjectReference Include="..\PokemonApi.Core\PokemonApi.Core.csproj" />
+  </ItemGroup>
+
 </Project>
