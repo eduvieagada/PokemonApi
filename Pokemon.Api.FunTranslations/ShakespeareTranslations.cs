@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PokemonApi.FunTranslations
 {
-    class ShakespeareTranslations : FunTranslations
+    public class ShakespeareTranslations : FunTranslations
     {
         public ShakespeareTranslations(string baseUrl, IHttpClientFactory httpClientFactory) : base(baseUrl, httpClientFactory)
         {
