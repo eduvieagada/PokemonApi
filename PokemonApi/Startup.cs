@@ -33,7 +33,7 @@ namespace PokemonApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PokemonApi", Version = "v1" });
             });
-
+            services.AddHttpClient();
             services.AddShakespeareTranslator(Configuration);
             services.AddYodaTranslator(Configuration);
         }
