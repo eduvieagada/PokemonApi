@@ -1,4 +1,4 @@
-﻿using Pokemon.Api.FunTranslations.Models;
+﻿using PokemonApi.FunTranslations.Models;
 using PokemonApi.Core;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pokemon.Api.FunTranslations
+namespace PokemonApi.FunTranslations
 {
     public class YodaTranslations : FunTranslations
     {

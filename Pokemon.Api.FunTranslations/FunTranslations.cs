@@ -1,10 +1,10 @@
-﻿using Pokemon.Api.FunTranslations.Models;
+﻿using PokemonApi.FunTranslations.Models;
 using PokemonApi.Core;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Pokemon.Api.FunTranslations
+namespace PokemonApi.FunTranslations
 {
     public abstract class FunTranslations : ITranslator
     {

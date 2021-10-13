@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pokemon.Api.FunTranslations.Models
+namespace PokemonApi.FunTranslations.Models
 {
     class ApiResponse
     {
