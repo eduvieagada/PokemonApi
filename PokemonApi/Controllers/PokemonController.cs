@@ -11,44 +11,56 @@ namespace PokemonApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PokemonController : ControllerBase
+    public class PokemonController : BaseController
     {
-        private readonly ILogger<PokemonController> _logger;
         private readonly IPokemonService _pokemonService;
 
-        public PokemonController(ILogger<PokemonController> logger, IPokemonService pokemonService)
+        public PokemonController(ILogger<PokemonController> logger, IPokemonService pokemonService) : base(logger)
         {
-            _logger = logger;
             _pokemonService = pokemonService;
         }
 
         [HttpGet("{pokemonName}")]
         public async Task<IActionResult> GetPokemon(string pokemonName)
         {
-            if (string.IsNullOrWhiteSpace(pokemonName))
+            try
             {
-                return BadRequest($"invalid pokemon name");
+                if (string.IsNullOrWhiteSpace(pokemonName))
+                {
+                    return BadRequest($"invalid pokemon name");
+                }
+
+                var pokemon = await _pokemonService.FetchPokemonData(pokemonName);
+
+
+                return FormatResult(pokemon);
             }
-
-            var pokemon = await _pokemonService.FetchPokemonData(pokemonName);
-
-
-            return FormatResult(pokemon);
+            catch(Exception ex)
+            {
+                return LogAndFormatError(ex);
+            }
         }
 
         [HttpGet("/translated/{pokemonName}")]
         public async Task<IActionResult> GetPokemonTranslated(string pokemonName)
         {
-            if (string.IsNullOrWhiteSpace(pokemonName))
+            try
             {
-                return BadRequest($"invalid pokemon name");
+                if (string.IsNullOrWhiteSpace(pokemonName))
+                {
+                    return BadRequest($"invalid pokemon name");
+                }
+
+                var pokemon = await _pokemonService.FetchTranslatedPokemonData(pokemonName);
+
+                return FormatResult(pokemon);
             }
-
-            var pokemon = await _pokemonService.FetchTranslatedPokemonData(pokemonName);
-
-            return FormatResult(pokemon);
+            catch (Exception ex)
+            {
+                return LogAndFormatError(ex);
+            }
         }
 
-        private IActionResult FormatResult(Pokemon pokemon) => pokemon is null ? NotFound() : Ok(pokemon);
+       
     }
 }
