@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonApi.Core.Models
+namespace PokemonApi.Core.Dto
 {
-    public class PokemonInfo
+    public class Pokemon
     {
         public string Name { get; set; }
         public string Description { get; set; }
