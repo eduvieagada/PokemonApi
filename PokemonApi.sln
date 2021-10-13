@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonApi", "PokemonApi\Po
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonApi.Core", "PokemonApi.Core\PokemonApi.Core.csproj", "{392F1ADF-E9A5-428E-9D78-D76174F6A47C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApi.Tests", "PokemonApi.Tests\PokemonApi.Tests.csproj", "{B1A79406-A8D7-4A54-8C8D-3BC5F06DB461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonApi.Tests", "PokemonApi.Tests\PokemonApi.Tests.csproj", "{B1A79406-A8D7-4A54-8C8D-3BC5F06DB461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Api.FunTranslations", "Pokemon.Api.FunTranslations\Pokemon.Api.FunTranslations.csproj", "{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Api.PokeApi", "Pokemon.Api.PokeApi\Pokemon.Api.PokeApi.csproj", "{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{B1A79406-A8D7-4A54-8C8D-3BC5F06DB461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1A79406-A8D7-4A54-8C8D-3BC5F06DB461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1A79406-A8D7-4A54-8C8D-3BC5F06DB461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D1E8AB-127B-48AB-A475-6BA82A9F34BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D70AE2-9E2A-4A16-868D-B5A1627D1D92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
