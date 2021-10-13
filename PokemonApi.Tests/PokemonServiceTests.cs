@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonApi.Tests.Unit
+namespace PokemonApi.Tests
 {
     using static PokemonTestUtilities;
     [TestFixture]

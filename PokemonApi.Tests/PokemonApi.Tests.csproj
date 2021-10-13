@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PokemonApi.Core\PokemonApi.Core.csproj" />
+    <ProjectReference Include="..\PokemonApi\PokemonApi.csproj" />
   </ItemGroup>
 
 </Project>

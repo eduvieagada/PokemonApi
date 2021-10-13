@@ -1,4 +1,5 @@
 ﻿using PokemonApi.Core.Dto;
+using PokemonApi.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,12 @@ namespace PokemonApi.Core.Impl
 
         public Task<Pokemon> FetchPokemonData(string pokemonName)
         {
-            return pokemonDataSource.FetchPokemon(pokemonName);
+            return pokemonDataSource.FetchPokemon(pokemonName) ?? throw new PokemonNotFoundException(nameof(pokemonName));
         }
 
         public async Task<Pokemon> FetchTranslatedPokemonData(string pokemonName)
         {
-            var pokemon = await pokemonDataSource.FetchPokemon(pokemonName);
+            var pokemon = await pokemonDataSource.FetchPokemon(pokemonName) ?? throw new PokemonNotFoundException(nameof(pokemonName));
 
             var translator = translatorFactory.GetTranslator(pokemon);
 
