@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonApi.Tests.Unit
+namespace PokemonApi.Tests
 {
     using static It;
     static class PokemonTestUtilities
