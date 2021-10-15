@@ -53,5 +53,15 @@ namespace PokemonApi.Tests
 
             statusCodeResult.StatusCode.Should().Be(404);
         }
+
+        [Test]
+        public async Task Return503_WhenExternalApiIsDown()
+        {
+            var actionResult = await _pokemonController.GetPokemon("eduvie");
+
+            var statusCodeResult = actionResult as StatusCodeResult;
+
+            statusCodeResult.StatusCode.Should().Be(503);
+        }
     }
 }
