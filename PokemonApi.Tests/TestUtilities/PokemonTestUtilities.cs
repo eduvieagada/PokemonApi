@@ -86,6 +86,6 @@ namespace PokemonApi.Tests
             return mockPokemonService.Object;
         }
 
-        public static ILogger<PokemonController> GetLogger() => new Mock<ILogger<PokemonController>>().Object;
+        public static ILogger<T> GetLogger<T>() => new Mock<ILogger<T>>().Object;
     }
 }

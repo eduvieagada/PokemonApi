@@ -20,7 +20,7 @@ namespace PokemonApi.Tests
         [SetUp]
         public void Setup()
         {
-            _pokemonController = new PokemonController(GetLogger(), GetPokemonService());
+            _pokemonController = new PokemonController(GetLogger<PokemonController>(), GetPokemonService());
         }
 
         [Test]
