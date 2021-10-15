@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using PokemonApi.Core.Exceptions;
 using PokemonApi.PokeApi;
 using PokemonApi.Tests.TestUtilities;
 using System;
@@ -23,6 +24,14 @@ namespace PokemonApi.Tests
             pokemon.Should().NotBeNull();
             pokemon.Name.Should().Be("mewtwo");
             pokemon.IsLegendary.Should().BeTrue();
+        }
+
+        [Test]
+        public void GivenWrongPokemonName_ThrowPokemonNotFoundException()
+        {
+            var pokeApiService = new PokeApiService(AddMockHttpClientFactory(), "https://pokeapi.co/api/v2");
+
+            Assert.ThrowsAsync<PokemonNotFoundException>(async () => await pokeApiService.FetchPokemon("eduvie"));
         }
     }
 }

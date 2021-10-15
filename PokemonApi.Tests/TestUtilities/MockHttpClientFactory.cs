@@ -19,6 +19,9 @@ namespace PokemonApi.Tests.TestUtilities
             handler.SetupRequest(HttpMethod.Get, "https://pokeapi.co/api/v2/pokemon-species/mewtwo")
                 .ReturnsResponse(HttpStatusCode.OK, PokeApiStub.MewTwoData(), "application/json");
 
+            handler.SetupRequest(HttpMethod.Get, "https://pokeapi.co/api/v2/pokemon-species/eduvie")
+                .ReturnsResponse(HttpStatusCode.NotFound);
+
             return handler.CreateClientFactory();
         }
 
