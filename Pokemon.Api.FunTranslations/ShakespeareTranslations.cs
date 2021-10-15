@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using PokemonApi.Core.Exceptions;
 
 namespace PokemonApi.FunTranslations
 {
@@ -17,12 +19,9 @@ namespace PokemonApi.FunTranslations
 
         }
         public override TranslatorType Type => TranslatorType.Shakespeare;
-        internal override Task<ApiResponse> MakeApiCall(string text)
+        internal override Task<ApiResponse> MakeApiCall(string text, string url)
         {
-            var httpClient = httpClientFactory.CreateClient();
-
-            httpClient.BaseAddress = new Uri(baseUrl);
-            return httpClient.GetFromJsonAsync<ApiResponse>($"/shakespeare.json?text={text}");
+            return base.MakeApiCall(text, $"{baseUrl}/shakespeare.json?text={text}");
         }
     }
 }
