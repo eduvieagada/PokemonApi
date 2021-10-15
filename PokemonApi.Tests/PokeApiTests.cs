@@ -27,11 +27,19 @@ namespace PokemonApi.Tests
         }
 
         [Test]
-        public void GivenWrongPokemonName_ThrowPokemonNotFoundException()
+        public void GivenInvalidPokemonName_ThrowPokemonNotFoundException()
         {
             var pokeApiService = new PokeApiService(AddMockHttpClientFactory(), "https://pokeapi.co/api/v2");
 
             Assert.ThrowsAsync<PokemonNotFoundException>(async () => await pokeApiService.FetchPokemon("eduvie"));
+        }
+
+        [Test]
+        public void Given500ResponseFromApi_ThrowPokemonDataException()
+        {
+            var pokeApiService = new PokeApiService(AddUnavailableApi(), "https://pokeapi.co/api/v2");
+
+            Assert.ThrowsAsync<PokemonDataException>(async () => await pokeApiService.FetchPokemon("mewtwo"));
         }
     }
 }

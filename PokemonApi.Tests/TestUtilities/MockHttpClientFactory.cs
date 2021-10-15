@@ -25,5 +25,13 @@ namespace PokemonApi.Tests.TestUtilities
             return handler.CreateClientFactory();
         }
 
+        public static IHttpClientFactory AddUnavailableApi()
+        {
+            var handler = new Mock<HttpMessageHandler>();
+            handler.SetupRequest(HttpMethod.Get, "https://pokeapi.co/api/v2/pokemon-species/mewtwo")
+                .ReturnsResponse(HttpStatusCode.ServiceUnavailable);
+
+            return handler.CreateClientFactory();
+        }
     }
 }
