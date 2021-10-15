@@ -76,8 +76,12 @@ namespace PokemonApi.Tests
 
             mockPokemonService.Setup(m => m.FetchPokemonData(IsIn("pikachu")))
                 .ThrowsAsync(new PokemonNotFoundException("pikachu"));
+
             mockPokemonService.Setup(m => m.FetchTranslatedPokemonData(IsIn("pikachu")))
                 .ThrowsAsync(new PokemonNotFoundException("pikachu"));
+
+            mockPokemonService.Setup(m => m.FetchPokemonData("eduvie"))
+                .ThrowsAsync(new PokemonDataException());
 
             return mockPokemonService.Object;
         }

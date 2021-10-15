@@ -43,5 +43,15 @@ namespace PokemonApi.Tests
 
             statusCodeResult.StatusCode.Should().Be(400);
         }
+
+        [Test]
+        public async Task GivenANonExistentPokemonName_Return404()
+        {
+            var actionResult = await _pokemonController.GetPokemon("pikachu");
+
+            var statusCodeResult = actionResult as StatusCodeResult;
+
+            statusCodeResult.StatusCode.Should().Be(404);
+        }
     }
 }
