@@ -22,10 +22,7 @@ namespace PokemonApi.Tests
         [SetUp]
         public void Setup()
         {
-            var pokemonDataSource = FetchDataSource();
-            var translatorFactory = GetTranslatorFactory();
-
-            pokemonService = new PokemonService(translatorFactory, pokemonDataSource);
+            pokemonService = new PokemonService(GetTranslatorFactory(), FetchDataSource(), GetLogger<PokemonService>());
         }
 
         [Test]

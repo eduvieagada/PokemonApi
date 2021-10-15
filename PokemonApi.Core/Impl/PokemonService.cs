@@ -1,4 +1,5 @@
-﻿using PokemonApi.Core.Dto;
+﻿using Microsoft.Extensions.Logging;
+using PokemonApi.Core.Dto;
 using PokemonApi.Core.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,14 @@ namespace PokemonApi.Core.Impl
     {
         private readonly TranslatorFactory translatorFactory;
         private readonly IPokemonDataSource pokemonDataSource;
+        private readonly ILogger<PokemonService> logger;
 
-        public PokemonService(TranslatorFactory translatorFactory, IPokemonDataSource pokemonDataSource)
+        public PokemonService(TranslatorFactory translatorFactory,
+            IPokemonDataSource pokemonDataSource, ILogger<PokemonService> logger)
         {
             this.translatorFactory = translatorFactory;
             this.pokemonDataSource = pokemonDataSource;
+            this.logger = logger;
         }
 
         public Task<Pokemon> FetchPokemonData(string pokemonName)
@@ -30,8 +34,15 @@ namespace PokemonApi.Core.Impl
 
             var translator = translatorFactory.GetTranslator(pokemon);
 
-            var translatedDescription = await translator.TranslateText(pokemon.Description);
-            pokemon.Description = translatedDescription is not null ? translatedDescription : pokemon.Description;
+            try
+            {
+                var translatedDescription = await translator.TranslateText(pokemon.Description);
+                pokemon.Description = translatedDescription is not null ? translatedDescription : pokemon.Description;
+            }
+            catch (TranslationException ex)
+            {
+                logger.LogError(ex.Message, ex);
+            }
 
             return pokemon;
         }
