@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PokemonApi.Core.Dto;
+using PokemonApi.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace PokemonApi.Controllers
         protected IActionResult LogAndFormatError(Exception ex)
         {
             _logger.LogError(ex.Message, ex);
+
+            if (ex is PokemonNotFoundException)
+                return StatusCode((int)HttpStatusCode.NotFound);
+            if (ex is PokemonDataException)
+                return StatusCode((int)HttpStatusCode.ServiceUnavailable);
 
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
