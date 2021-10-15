@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using PokemonApi.Core.Exceptions;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace PokemonApi.PokeApi
 {
@@ -23,9 +24,9 @@ namespace PokemonApi.PokeApi
         public async Task<Core.Dto.Pokemon> FetchPokemon(string pokemonName)
         {
             var client = httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri(baseUrl);
 
-            var response = await client.GetFromJsonAsync<PokeApiResponse>($"/pokemon-species/{pokemonName}");
+            var responseString = await client.GetStringAsync($"{baseUrl}/pokemon-species/{pokemonName}");
+            var response = JsonConvert.DeserializeObject<PokeApiResponse>(responseString);
 
             if (response is null) throw new PokemonNotFoundException(pokemonName);
 
